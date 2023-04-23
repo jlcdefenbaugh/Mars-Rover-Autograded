@@ -30,8 +30,6 @@ describe("Rover class", function() {
     let rover = new Rover(98382);
     let response = rover.receiveMessage(message);
     expect(response.results.length).toEqual(commands.length);
-    // expect(response.results[0]).toEqual(commands[0]);
-    // expect(response.results[1]).toEqual(commands[1]);
   });
 
   it("responds correctly to Status Check command", function() {
@@ -42,10 +40,6 @@ describe("Rover class", function() {
     let roverUpdate = {completed: true, roverStatus: {mode: rover.mode, generatorWatts: rover.generatorWatts, position: rover.position}}
     expect(response.results[0].completed).toEqual(true);
     expect(response.results[0].roverStatus).toEqual({mode: rover.mode, generatorWatts: rover.generatorWatts, position: rover.position});
-    // let roverUpdate = {mode: rover.mode, generatorWatts: rover.generatorWatts, position: rover.position};
-    // expect(response.results).toContain({roverStatus: roverUpdate});
-    // expect(response.results[0].roverStatus).toEqual(roverStatus);
-    // expect(response.results).toEqual(roverStatus)
   });
 
   it("responds correctly to mode change command", function() {
@@ -55,7 +49,6 @@ describe("Rover class", function() {
     let response = rover.receiveMessage(message);
     expect(response.results[0].completed).toEqual(true);
     expect(rover.mode).toEqual('LOW_POWER');
-    // expect(response.results[0].roverStatus.mode).toEqual('LOW_POWER')
   });
 
   it("responds with false completed value when attempting to move in LOW_POWER mode", function() {
